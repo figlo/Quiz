@@ -19,7 +19,7 @@ object Constants {
             text = "What country does this flag belong to?",
             image = R.drawable.ic_flag_of_belgium,
             options = listOf("Bahrain", "Burundi", "Belgium", "Bulgaria"),
-            correctAnswer = 0
+            correctAnswer = 2
         )
         questions.add(question2)
 
@@ -28,7 +28,7 @@ object Constants {
             text = "What country does this flag belong to?",
             image = R.drawable.ic_flag_of_denmark,
             options = listOf("Norway", "Sweden", "Finland", "Denmark"),
-            correctAnswer = 0
+            correctAnswer = 3
         )
         questions.add(question3)
 

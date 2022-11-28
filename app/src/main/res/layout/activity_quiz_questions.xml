@@ -12,30 +12,30 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/tvQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:gravity="center"
             android:textColor="#363a43"
-            android:textSize="22sp"
+            android:textSize="18sp"
             tools:text="What country does this flag belong to?" />
 
         <ImageView
             android:id="@+id/ivImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:contentDescription="Quiz image"
             tools:src="@drawable/ic_flag_of_new_zealand" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -47,7 +47,7 @@
                 android:layout_weight="1"
                 android:indeterminate="false"
                 android:max="3"
-                android:minHeight="50dp"
+                android:minHeight="30dp"
                 android:progress="0" />
 
             <TextView
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:textSize="14sp"
                 tools:text="0/3" />
 
@@ -65,10 +65,10 @@
             android:id="@+id/tvOptionOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:background="@drawable/default_option_border_bg"
             android:gravity="center"
-            android:padding="15dp"
+            android:padding="10dp"
             android:textColor="#7a8089"
             android:textSize="18sp"
             tools:text="Apple" />
@@ -77,10 +77,10 @@
             android:id="@+id/tvOptionTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:background="@drawable/default_option_border_bg"
             android:gravity="center"
-            android:padding="15dp"
+            android:padding="10dp"
             android:textColor="#7a8089"
             android:textSize="18sp"
             tools:text="Apple" />
@@ -89,10 +89,10 @@
             android:id="@+id/tvOptionThree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:background="@drawable/default_option_border_bg"
             android:gravity="center"
-            android:padding="15dp"
+            android:padding="10dp"
             android:textColor="#7a8089"
             android:textSize="18sp"
             tools:text="Apple" />
@@ -101,10 +101,10 @@
             android:id="@+id/tvOptionFour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:background="@drawable/default_option_border_bg"
             android:gravity="center"
-            android:padding="15dp"
+            android:padding="10dp"
             android:textColor="#7a8089"
             android:textSize="18sp"
             tools:text="Apple" />
@@ -113,11 +113,11 @@
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:background="@color/design_default_color_primary"
             android:text="SUBMIT"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
     </LinearLayout>

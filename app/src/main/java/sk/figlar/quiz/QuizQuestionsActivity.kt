@@ -5,17 +5,14 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 
 class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
-    private var mCurrentPosition: Int = 1
+    private var mCurrentQuestionPosition: Int = 1
     private var mQuestionList: List<Question>? = null
-    private var mSelectedOption: Int = 0
+    private var mSelectedOptionPosition: Int = -1
 
     private var progressBar: ProgressBar? = null
     private var tvProgress: TextView? = null
@@ -76,7 +73,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
         defaultOptionsView()
 
-        mSelectedOption = selectedOptionNum
+        mSelectedOptionPosition = selectedOptionNum
 
         tv.setTextColor(Color.parseColor("#363a43"))
         tv.setTypeface(tv.typeface, Typeface.BOLD)
@@ -87,20 +84,51 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setQuestion() {
-        var question = mQuestionList!![mCurrentPosition - 1]
+        defaultOptionsView()
+
+        val question = mQuestionList!![mCurrentQuestionPosition - 1]
         ivImage?.setImageResource(question.image)
-        progressBar?.progress = mCurrentPosition
-        tvProgress?.text = "$mCurrentPosition / ${progressBar?.max}"
+        progressBar?.progress = mCurrentQuestionPosition
+        tvProgress?.text = "$mCurrentQuestionPosition / ${progressBar?.max}"
         tvQuestion?.text = question.text
         tvOptionOne?.text = question.options[0]
         tvOptionTwo?.text = question.options[1]
         tvOptionThree?.text = question.options[2]
         tvOptionFour?.text = question.options[3]
 
-        if (mCurrentPosition == mQuestionList!!.size) {
+        if (mCurrentQuestionPosition == mQuestionList!!.size) {
             btnSubmit?.text = "FINISH"
         } else {
             btnSubmit?.text = "SUBMIT"
+        }
+    }
+
+    private fun answerView(answer: Int, drawableView: Int) {
+        when (answer) {
+            0 -> {
+                tvOptionOne?.background = ContextCompat.getDrawable(
+                    this,
+                    drawableView
+                )
+            }
+            1 -> {
+                tvOptionTwo?.background = ContextCompat.getDrawable(
+                    this,
+                    drawableView
+                )
+            }
+            2 -> {
+                tvOptionThree?.background = ContextCompat.getDrawable(
+                    this,
+                    drawableView
+                )
+            }
+            3 -> {
+                tvOptionFour?.background = ContextCompat.getDrawable(
+                    this,
+                    drawableView
+                )
+            }
         }
     }
 
@@ -127,7 +155,28 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.btnSubmit     -> {
-                // todo
+                if (mSelectedOptionPosition == -1) {
+                    mCurrentQuestionPosition++
+
+                    if (mCurrentQuestionPosition <= mQuestionList!!.size) {
+                        setQuestion()
+                    } else {
+                        Toast.makeText(this, "You made it to the end", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    val question = mQuestionList!![mCurrentQuestionPosition - 1]
+                    if (question.correctAnswer != mSelectedOptionPosition) {
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    }
+                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                    if (mCurrentQuestionPosition == mQuestionList!!.size) {
+                        btnSubmit?.text = "FINISH"
+                    } else {
+                        btnSubmit?.text = "GO TO NEXT QUESTION"
+                    }
+                    mSelectedOptionPosition = -1
+                }
             }
         }
     }
